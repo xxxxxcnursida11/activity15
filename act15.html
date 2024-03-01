@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text to Speech</title>
+    <link rel="stylesheet" href="adsla.css">
+</head>
+<body>
+    <h1>Text  Speech</h1>
+    <div class="container">
+        <textarea id="textInput" placeholder="Enter text here..."></textarea>
+        <select id="languageSelect">
+            <option value="en-US">English (US)</option>
+            <option value="en-GB">English (UK)</option>
+            <option value="fr-FR">French</option>
+            <option value="ja-JP">Japanese</option>
+            <option value="zh-TW">Chinese (Traditional)</option>
+            <!-- Add more options for different languages and accents -->
+        </select>
+        <button onclick="speakText()">Speak</button>
+    </div>
+    <script>
+    function speakText() {
+        var textInput = document.getElementById("textInput").value;
+        var selectedLanguage = document.getElementById("languageSelect").value;
+        
+        // Create an instance of SpeechSynthesisUtterance
+        var utterance = new SpeechSynthesisUtterance(textInput);
+        
+        // Set the language and accent
+        utterance.lang = selectedLanguage;
+        
+        // Speak the text
+        window.speechSynthesis.speak(utterance);
+    }
+</script>
+</body>
+</html>
